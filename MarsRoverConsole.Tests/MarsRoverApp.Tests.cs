@@ -1,4 +1,6 @@
+using MarsRoverConsole.MarsRoverApp;
 namespace MarsRoverConsole.Tests;
+
 
 public class MarsRoverAppTests
 {
