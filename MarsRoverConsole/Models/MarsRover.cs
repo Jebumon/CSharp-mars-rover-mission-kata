@@ -8,5 +8,9 @@ namespace MarsRoverConsole.Models
 {
     public class MarsRover
     {
+        public string Rover() 
+        {
+            return "North";
+        }
     }
 }
