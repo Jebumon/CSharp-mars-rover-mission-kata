@@ -8,19 +8,39 @@ namespace MarsRoverConsole.Models
 {
     public class InstructionDecoder
     {
-        public string Decode(string instruction) 
+        public InstructionDecoder()
         {
-            switch (instruction) 
+        }
+
+        public string Decode(string instructions) 
+        {
+            string command = "";
+            char [] singleInstructions = instructions.ToCharArray();
+
+            foreach (char instruction in singleInstructions) 
             {
-                case "L": return "Left";
+                Console.WriteLine(instruction);
+               
 
-                case "R": return "Right";
+                switch (instruction)
+                {
+                    case 'L': command += "Left ";
+                        break;
 
-                case "M": return "Move Forward";
+                    case 'R': command += "Right ";
+                        break ;
 
-                default: return "Unknown command";
+                    case 'M': command += "Move Forward ";
+                        break;
 
+                    default: command += "Unknown command ";
+                        break;
+
+                }
             }
+            Console.WriteLine(command);
+            return command;
+            
         }
     }
 }
