@@ -1,15 +1,15 @@
 namespace MarsRoverConsole.Tests;
 using FluentAssertions;
-using MarsRoverConsole.MarsRoverApp;
+using MarsRoverConsole.MarsMissionApp;
 
 public class MarsRoverAppTests
 {
-    private MarsRoverApp MarsRoverApp;
+    private MarsMissionApp MarsRoverApp;
 
     [SetUp]
     public void Setup()
     {
-        MarsRoverApp = new MarsRoverApp();
+        MarsRoverApp = new MarsMissionApp();
     }
 
     [Test]

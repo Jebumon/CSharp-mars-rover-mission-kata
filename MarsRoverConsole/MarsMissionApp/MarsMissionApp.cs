@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using MarsRoverConsole.Models;
 
-namespace MarsRoverConsole.MarsRoverApp
+namespace MarsRoverConsole.MarsMissionApp
 {
-    public class MarsRoverApp
+    public class MarsMissionApp
     {
         
 
         InstructionDecoder instructionDecoder = new InstructionDecoder();
 
-        public MarsRoverApp()
+        public MarsMissionApp()
         {
         }
 

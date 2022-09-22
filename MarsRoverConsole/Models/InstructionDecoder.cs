@@ -37,6 +37,8 @@ namespace MarsRoverConsole.Models
                         break;
 
                 }
+
+
             }
             Console.WriteLine(command);
             return command;
