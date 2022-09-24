@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsRoverConsole.Models
+namespace MarsMissionConsole.Models
 {
-    internal class Plateau
+    internal class Obstacles
     {
     }
 }

@@ -4,60 +4,65 @@ using MarsRoverConsole.MarsMissionApp;
 
 public class MarsRoverAppTests
 {
-    private MarsMissionApp MarsRoverApp;
+    private MarsMissionAppManager MarsRoverApp;
 
     [SetUp]
     public void Setup()
     {
-        MarsRoverApp = new MarsMissionApp();
+        MarsRoverApp = new MarsMissionAppManager(5,5);
     }
 
     [Test]
-    public void Decode_Orientation_L_should_Left()
+    public void Decode_Command_N_LL_should_S()
     {
-        MarsRoverApp.MarsManager("L").Should().Be("Left ");
+        MarsRoverApp.MarsManager("N","LL").Should().Be("S");
     }
 
     [Test]
-    public void Decode_Orientation_R_should_Right()
+    public void Decode_Command_N_RR_should_S()
     {
-        MarsRoverApp.MarsManager("R").Should().Be("Right ");
+        MarsRoverApp.MarsManager("N","RR").Should().Be("S");
     }
 
     [Test]
-    public void Decode_Orientation_M_should_Move()
+    public void Decode_Command_S_LL_should_N()
     {
-        MarsRoverApp.MarsManager("M").Should().Be("Move Forward ");
+        MarsRoverApp.MarsManager("S","LL").Should().Be("N");
     }
 
     [Test]
-    public void Decode_Orientation_null_should_UnknownCommand()
+    public void Decode_Command_S_RR_should_N()
     {
-        MarsRoverApp.MarsManager(" ").Should().Be("Unknown command ");
+        MarsRoverApp.MarsManager("S","RR").Should().Be("N");
     }
 
     [Test]
-    public void Decode_Orientation_LLR_should_LeftLeftRight()
+    public void DDecode_Command_N_LLR_should_W()
     {
-        MarsRoverApp.MarsManager("LLR").Should().Be("Left Left Right ");
+        MarsRoverApp.MarsManager("N","LLR").Should().Be("W");
     }
 
     [Test]
-    public void Decode_Orientation_LL_should_LeftLeft()
+    public void Decode_Command_E_LL_should_W()
     {
-        MarsRoverApp.MarsManager("LL").Should().Be("Left Left ");
+        MarsRoverApp.MarsManager("E","LL").Should().Be("W");
     }
 
     [Test]
-    public void Decode_Orientation_LLL_should_LeftLeftLeft()
+    public void Decode_Command_E_RR_should_W()
     {
-        MarsRoverApp.MarsManager("LLL").Should().Be("Left Left Left ");
+        MarsRoverApp.MarsManager("E","RR").Should().Be("W");
     }
 
     [Test]
-    public void Decode_Orientation_RRR_should_RightRightRight()
+    public void Decode_Command_W_LL_should_E()
     {
-        MarsRoverApp.MarsManager("LLL").Should().Be("Left Left Left ");
+        MarsRoverApp.MarsManager("W", "LL").Should().Be("E");
     }
 
+    [Test]
+    public void Decode_Command_W_RR_should_E()
+    {
+        MarsRoverApp.MarsManager("W", "RR").Should().Be("E");
+    }
 }

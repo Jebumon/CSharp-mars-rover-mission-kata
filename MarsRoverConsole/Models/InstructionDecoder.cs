@@ -12,11 +12,11 @@ namespace MarsRoverConsole.Models
         {
         }
 
-        public string Decode(string instructions) 
+        public string[] Decode(string instructions) 
         {
-            string command = "";
+            string[] commandArray = new string[instructions.Length];
             char [] singleInstructions = instructions.ToCharArray();
-
+            int i = 0;
             foreach (char instruction in singleInstructions) 
             {
                 Console.WriteLine(instruction);
@@ -24,24 +24,32 @@ namespace MarsRoverConsole.Models
 
                 switch (instruction)
                 {
-                    case 'L': command += "Left ";
+                    case 'L':
+                        commandArray[i++] = "Left";
                         break;
 
-                    case 'R': command += "Right ";
+                    case 'R':
+                        commandArray[i++] = "Right";
                         break ;
 
-                    case 'M': command += "Move Forward ";
+                    case 'M':
+                        commandArray[i++] = "MoveForward";
                         break;
 
-                    default: command += "Unknown command ";
+                    default:
+                        commandArray[i++] = "Unknown command";
                         break;
 
                 }
 
 
             }
-            Console.WriteLine(command);
-            return command;
+            foreach(string instruction in commandArray)
+            {
+                Console.WriteLine(instruction.ToString());
+            }
+            
+            return commandArray;
             
         }
     }
