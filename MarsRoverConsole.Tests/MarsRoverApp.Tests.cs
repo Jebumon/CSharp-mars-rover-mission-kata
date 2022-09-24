@@ -65,4 +65,20 @@ public class MarsRoverAppTests
     {
         MarsRoverApp.MarsManager("W", "RR").Should().Be("E");
     }
+
+    [Test]
+    public void Decode_Command_R_RR_should_ArgumentException()
+    {
+        var ex = Assert.Throws<ArgumentException>(() => MarsRoverApp.MarsManager("R", "RR"));
+        Assert.That(ex.Message, Is.EqualTo("Please enter a valid direction"));
+        
+    }
+
+    [Test]
+    public void Decode_Command_N_RQQ_should_ArgumentException()
+    {
+        var ex = Assert.Throws<ArgumentException>(() => MarsRoverApp.MarsManager("N", "RQQ"));
+        Assert.That(ex.Message, Is.EqualTo("Please enter valid command"));
+
+    }
 }

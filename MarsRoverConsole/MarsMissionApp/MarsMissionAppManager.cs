@@ -19,9 +19,9 @@ namespace MarsRoverConsole.MarsMissionApp
 
         
 
-        DirectionCalculator directionCalculator = new DirectionCalculator();
+        //DirectionCalculator directionCalculator = new DirectionCalculator();
 
-        RectangularPlateau rectangularPlateau = new RectangularPlateau();
+        //RectangularPlateau rectangularPlateau = new RectangularPlateau();
 
         
 
@@ -34,18 +34,20 @@ namespace MarsRoverConsole.MarsMissionApp
             Y_MaxCoordinateOfPlateaue = yMaxCoordinate;
         }
 
-        public string MarsManager(string initialDirection, string inputInstructions) 
+        public string MarsManager(int Rover_X_Coordinate, int Rover_Y_Coordinate, string initialDirection, string inputInstructions) 
         {
             CurrentCoordinate currentCoordinate = new CurrentCoordinate();
+            RectangularPlateau plateau = new RectangularPlateau(X_MaxCoordinateOfPlateaue,Y_MaxCoordinateOfPlateaue);
+            plateau.DrawPlateau();
 
-            MarsRover marsRover = new MarsRover(currentCoordinate);
+            //MarsRover marsRover = new MarsRover(currentCoordinate);
             
 
             currentCoordinate.CurrentDirection = initialDirection;
 
-            Console.WriteLine("InitialDir"+initialDirection);
+            //Console.WriteLine("InitialDir"+initialDirection);
 
-            Console.WriteLine("Cur"+currentCoordinate.CurrentDirection);
+            //Console.WriteLine("Cur"+currentCoordinate.CurrentDirection);
 
             String[] decodedInstructionsArray = instructionDecoder.Decode(inputInstructions);
 
@@ -54,7 +56,7 @@ namespace MarsRoverConsole.MarsMissionApp
             instructionTransmitter.TransmitInstruction(decodedInstructionsArray);
 
 
-            Console.WriteLine(currentCoordinate.CurrentDirection);
+            //Console.WriteLine(currentCoordinate.CurrentDirection);
 
             //String decodedDirection = directionCalculator.CalculateDirection(InitialDirection, decodedInstructionsArray);
 

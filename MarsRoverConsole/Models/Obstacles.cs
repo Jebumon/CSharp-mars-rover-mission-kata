@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MarsMissionConsole.Models
 {
-    internal class Obstacles
+    public class Obstacles
     {
+        public int X_Coordinate { get; set; }
+        public int Y_Coordinate { get; set; }
     }
 }

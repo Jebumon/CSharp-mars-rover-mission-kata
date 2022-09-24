@@ -38,6 +38,7 @@ namespace MarsRoverConsole.Models
 
                     default:
                         commandArray[i++] = "Unknown command";
+                        throw new ArgumentException(message: "Please enter valid command");
                         break;
 
                 }

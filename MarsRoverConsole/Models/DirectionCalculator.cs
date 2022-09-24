@@ -17,51 +17,52 @@ namespace MarsMissionConsole.Models
 
         public string CalculateDirection(string currentDirection, string command) 
         {
-            if(currentDirection == "N") 
-            {
-                switch (command)
+                if (currentDirection == "N")
                 {
-                    case "Left":
-                        return "W";
-                    case "Right":
-                        return "E";
+                    switch (command)
+                    {
+                        case "Left":
+                            return "W";
+                        case "Right":
+                            return "E";
 
+                    }
                 }
-            }
-            else if (currentDirection == "E") 
-            {
-                switch (command)
+                else if (currentDirection == "E")
                 {
-                    case "Left":
-                        return "N";
-                    case "Right":
-                        return "S";
+                    switch (command)
+                    {
+                        case "Left":
+                            return "N";
+                        case "Right":
+                            return "S";
 
+                    }
                 }
-            }
-            else if (currentDirection == "W")
-            {
-                switch (command)
+                else if (currentDirection == "W")
                 {
-                    case "Left":
-                        return "S";
-                    case "Right":
-                        return "N";
+                    switch (command)
+                    {
+                        case "Left":
+                            return "S";
+                        case "Right":
+                            return "N";
 
+                    }
                 }
-            }
-            else if (currentDirection == "S")
-            {
-                switch (command)
+                else if (currentDirection == "S")
                 {
-                    case "Left":
-                        return "E";
-                    case "Right":
-                        return "W";
+                    switch (command)
+                    {
+                        case "Left":
+                            return "E";
+                        case "Right":
+                            return "W";
+                    }
                 }
-            }
-
-            return "Error from direction";
+            throw new ArgumentException("Please enter a valid direction");
+            
+            //return "Please enter a valid Direction";
         }
     }
 }
