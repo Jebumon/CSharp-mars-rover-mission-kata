@@ -11,7 +11,6 @@ namespace MarsRoverConsole.Models
         public InstructionDecoder()
         {
         }
-
         public string[] Decode(string instructions) 
         {
             string[] commandArray = new string[instructions.Length];
@@ -19,9 +18,6 @@ namespace MarsRoverConsole.Models
             int i = 0;
             foreach (char instruction in singleInstructions) 
             {
-                Console.WriteLine(instruction);
-               
-
                 switch (instruction)
                 {
                     case 'L':
@@ -37,18 +33,14 @@ namespace MarsRoverConsole.Models
                         break;
 
                     default:
-                        commandArray[i++] = "Unknown command";
+                        commandArray[i++] = "UnknownCommand";
                         throw new ArgumentException(message: "Please enter valid command");
-                        break;
-
                 }
-
-
             }
-            foreach(string instruction in commandArray)
+            /*foreach(string instruction in commandArray)
             {
                 Console.WriteLine(instruction.ToString());
-            }
+            }*/
             
             return commandArray;
             

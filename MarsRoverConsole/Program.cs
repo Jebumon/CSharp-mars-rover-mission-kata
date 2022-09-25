@@ -2,7 +2,7 @@
 using MarsRoverConsole.MarsMissionApp;
 using MarsMissionConsole.Models;
 
-Console.WriteLine("Hello, World");
+Console.WriteLine("******************** Mission to Mars **********************");
 
 Console.WriteLine("Enter maximum X coordinate of Plateau");
 int Max_X_Coordinate = Convert.ToInt32(Console.ReadLine()) + 1;
@@ -19,6 +19,13 @@ Console.WriteLine("Enter initial direction of Rover");
 string RoverInitialDirection = Console.ReadLine();
 Console.WriteLine("Enter some Instructions for Rover");
 string RoverInstructions = Console.ReadLine();
+Console.WriteLine("\n********************** Rover data from Mars *************************\n");
+string RoverDestination = marsMissionAppManager.MarsManager(Rover_X_Coordinate, Rover_Y_Coordinate, RoverInitialDirection, RoverInstructions);
 
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("Rover initial position : " + Rover_X_Coordinate.ToString()+ " "+ Rover_Y_Coordinate.ToString()+ " "+ RoverInitialDirection);
+Console.WriteLine("Input instructions     : " + RoverInstructions);
+Console.WriteLine("Rover final position   : " + RoverDestination);
 
-Console.WriteLine(marsMissionAppManager.MarsManager(Rover_X_Coordinate, Rover_Y_Coordinate, RoverInitialDirection, RoverInstructions));
+Console.ForegroundColor = ConsoleColor.White;
+//Console.WriteLine("Rover Destination coordinates : "+marsMissionAppManager.MarsManager(Rover_X_Coordinate, Rover_Y_Coordinate, RoverInitialDirection, RoverInstructions));

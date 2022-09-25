@@ -12,13 +12,8 @@ namespace MarsRoverConsole.Models
     {
         public int Max_X_Coordinate { get; set; }
         public int Max_Y_Coordinate { get; set; }
-
-        //public string[,] Layout { get; set; }
         PlateauLayout plateauLayout { get; set; }
         PlateauMap PlateauMap { get; set; }
-
-
-
         public PlateauManager(int max_x, int max_y, PlateauMap plateauMap)
         {
             Max_X_Coordinate = max_x;
@@ -26,8 +21,6 @@ namespace MarsRoverConsole.Models
             PlateauMap = plateauMap;
             plateauLayout = new PlateauLayout(Max_X_Coordinate, Max_Y_Coordinate, PlateauMap);
         }
-
-        
 
         public bool AddObstacles(int x_Coordinate, int y_Coordinate)
         {
@@ -43,7 +36,7 @@ namespace MarsRoverConsole.Models
 
         public void PrintPlateau() 
         {
-            for (int j = Max_X_Coordinate-1; j > 0 ; j--)
+            for (int j = Max_X_Coordinate-1; j >= 0 ; j--)
             {
                 for (int k = 0; k < Max_Y_Coordinate; k++)
                 {

@@ -12,16 +12,12 @@ namespace MarsMissionConsole.Models
         public int Max_X { get; private set; }
         public int Max_Y { get; private set; }
 
-        //PlateauMap plateauMap { get; set; }
-
         public PlateauLayout(int max_X, int max_Y, PlateauMap plateauMap)
         {
             Max_X = max_X;
             Max_Y = max_Y;  
             PlateauMap = plateauMap;
         }
-        
-
         public PlateauMap DrawLayout() 
         {
             string[,] layout = new string[Max_X, Max_Y];
@@ -30,7 +26,7 @@ namespace MarsMissionConsole.Models
             {
                 for(int k = 0; k<Max_Y; k++) 
                 {
-                    layout[j,k] = "_";
+                    layout[j,k] = "🟨";
                 }
             }
 

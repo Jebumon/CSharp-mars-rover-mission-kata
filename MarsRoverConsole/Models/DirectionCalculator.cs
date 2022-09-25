@@ -8,8 +8,6 @@ namespace MarsMissionConsole.Models
 {
     public class DirectionCalculator
     {
-        //string[] directions = { "West", "North", "East", "South" };
-        //string newDirection = "";
 
         public DirectionCalculator()
         {
@@ -61,8 +59,7 @@ namespace MarsMissionConsole.Models
                     }
                 }
             throw new ArgumentException("Please enter a valid direction");
-            
-            //return "Please enter a valid Direction";
+
         }
     }
 }

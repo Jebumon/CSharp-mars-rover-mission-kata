@@ -13,14 +13,11 @@ namespace MarsMissionConsole.Models
         DirectionCalculator directionCalculator = new DirectionCalculator();
         CurrentCoordinate CurrentCoordinate { get; set; }
         PlateauMap PlateauMap { get; set; }
-        //public string[,] PlateauLayout { get; set; }
 
         public VehicleManager(CurrentCoordinate currentCoordinate, PlateauMap plateauMap)
         {
             CurrentCoordinate = currentCoordinate;
             PlateauMap = plateauMap;
-            
-            //PlateauLayout = plateauLayout;
         }
 
 
@@ -29,28 +26,37 @@ namespace MarsMissionConsole.Models
             throw new NotImplementedException();
         }
 
-        public virtual void MoveForward(int x, int y)
+        public virtual CurrentCoordinate MoveForward(int x, int y)
         {
-            throw new NotImplementedException();
+            switch(CurrentCoordinate.CurrentDirection)
+            {
+                case "N":
+                    CurrentCoordinate.Y_Coordinate++;
+                    break;
+                case "E":
+                    CurrentCoordinate.X_Coordinate++;
+                    break;
+                case "W":
+                    CurrentCoordinate.X_Coordinate--;
+                    break;
+                case "S":
+                    CurrentCoordinate.Y_Coordinate--;
+                    break;
+            }
+            return CurrentCoordinate;
         }
 
         public virtual void TurnLeft()
         {
-            Console.WriteLine("RoverTurnLeft");
-            //Console.WriteLine("Direction" + CurrentCoordinate.CurrentDirection);
+            Console.WriteLine("Rover Turn Left ◀️");
             NewDirection = directionCalculator.CalculateDirection(CurrentCoordinate.CurrentDirection, "Left");
-            Console.WriteLine("Direction" + CurrentCoordinate.CurrentDirection);
-            //Console.WriteLine(NewDirection);
             CurrentCoordinate.CurrentDirection = NewDirection;
         }
-
+        
         public virtual void TurnRight()
         {
-            Console.WriteLine("RoverTurnRight");
-            //Console.WriteLine("Direction" + CurrentCoordinate.CurrentDirection);
+            Console.WriteLine("Rover Turn Right ▶️");
             NewDirection = directionCalculator.CalculateDirection(CurrentCoordinate.CurrentDirection, "Right");
-            Console.WriteLine("Direction" + CurrentCoordinate.CurrentDirection);
-            //Console.WriteLine(NewDirection);
             CurrentCoordinate.CurrentDirection = NewDirection;
         }
     }

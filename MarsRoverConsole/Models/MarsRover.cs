@@ -13,10 +13,5 @@ namespace MarsRoverConsole.Models
         {
         }
 
-        public string Rover() 
-        {
-
-            return "Rover";
-        }
     }
 }

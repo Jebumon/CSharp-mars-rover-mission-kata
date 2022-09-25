@@ -13,6 +13,5 @@ namespace MarsMissionConsole.Models
         {
         }
 
-        
     }
 }
