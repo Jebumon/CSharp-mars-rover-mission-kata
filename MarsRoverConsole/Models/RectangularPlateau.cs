@@ -9,7 +9,7 @@ namespace MarsMissionConsole.Models
 {
     public class RectangularPlateau : PlateauManager
     {
-        public RectangularPlateau(int max_x, int max_y): base(max_x, max_y)
+        public RectangularPlateau(int max_x, int max_y, PlateauMap plateauMap): base(max_x, max_y, plateauMap)
         {
         }
 

@@ -9,7 +9,7 @@ namespace MarsRoverConsole.Models
 {
     public class MarsRover : VehicleManager
     {
-        public MarsRover(CurrentCoordinate currentCoordinate) : base(currentCoordinate)
+        public MarsRover(CurrentCoordinate currentCoordinate, PlateauMap plateauMap) : base(currentCoordinate, plateauMap)
         {
         }
 

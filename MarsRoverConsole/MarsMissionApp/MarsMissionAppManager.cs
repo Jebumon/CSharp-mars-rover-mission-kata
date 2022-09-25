@@ -17,17 +17,6 @@ namespace MarsRoverConsole.MarsMissionApp
 
         InstructionDecoder instructionDecoder = new InstructionDecoder();
 
-        
-
-        //DirectionCalculator directionCalculator = new DirectionCalculator();
-
-        //RectangularPlateau rectangularPlateau = new RectangularPlateau();
-
-        
-
-
-
-
         public MarsMissionAppManager(int xMaxCoordinate, int yMaxCoordinate)
         {
             X_MaxCoordinateOfPlateaue = xMaxCoordinate;
@@ -37,29 +26,28 @@ namespace MarsRoverConsole.MarsMissionApp
         public string MarsManager(int Rover_X_Coordinate, int Rover_Y_Coordinate, string initialDirection, string inputInstructions) 
         {
             CurrentCoordinate currentCoordinate = new CurrentCoordinate();
-            RectangularPlateau plateau = new RectangularPlateau(X_MaxCoordinateOfPlateaue,Y_MaxCoordinateOfPlateaue);
-            plateau.DrawPlateau();
-
-            //MarsRover marsRover = new MarsRover(currentCoordinate);
-            
-
             currentCoordinate.CurrentDirection = initialDirection;
+            currentCoordinate.X_Coordinate = Rover_X_Coordinate;
+            currentCoordinate.Y_Coordinate = Rover_Y_Coordinate;
 
-            //Console.WriteLine("InitialDir"+initialDirection);
+            PlateauMap plateauMap = new PlateauMap();
 
-            //Console.WriteLine("Cur"+currentCoordinate.CurrentDirection);
-
+            RectangularPlateau plateau = new RectangularPlateau(X_MaxCoordinateOfPlateaue,Y_MaxCoordinateOfPlateaue, plateauMap);
+            plateau.DrawPlateau();
+            Console.WriteLine("----------------Plateau Layout----------------");
+            plateau.PrintPlateau();
+            plateauMap.Layout[currentCoordinate.X_Coordinate, currentCoordinate.Y_Coordinate] = "^";
+            Console.WriteLine("----------------Plateau Layout----------------");
+            plateau.PrintPlateau();
             String[] decodedInstructionsArray = instructionDecoder.Decode(inputInstructions);
 
-            InstructionTransmitter instructionTransmitter = new InstructionTransmitter(currentCoordinate);
+            InstructionTransmitter instructionTransmitter = new InstructionTransmitter(currentCoordinate, plateauMap);
 
             instructionTransmitter.TransmitInstruction(decodedInstructionsArray);
 
+            
 
-            //Console.WriteLine(currentCoordinate.CurrentDirection);
-
-            //String decodedDirection = directionCalculator.CalculateDirection(InitialDirection, decodedInstructionsArray);
-
+          
             return currentCoordinate.CurrentDirection;
         }
     }

@@ -13,16 +13,18 @@ namespace MarsRoverConsole.Models
         public int Max_X_Coordinate { get; set; }
         public int Max_Y_Coordinate { get; set; }
 
-        public string[,] Layout { get; set; }
-        public PlateauLayout plateauLayout { get; set; }
+        //public string[,] Layout { get; set; }
+        PlateauLayout plateauLayout { get; set; }
+        PlateauMap PlateauMap { get; set; }
 
 
 
-        public PlateauManager(int max_x, int max_y)
+        public PlateauManager(int max_x, int max_y, PlateauMap plateauMap)
         {
             Max_X_Coordinate = max_x;
             Max_Y_Coordinate = max_y;
-            plateauLayout = new PlateauLayout(Max_X_Coordinate, Max_Y_Coordinate);
+            PlateauMap = plateauMap;
+            plateauLayout = new PlateauLayout(Max_X_Coordinate, Max_Y_Coordinate, PlateauMap);
         }
 
         
@@ -32,24 +34,24 @@ namespace MarsRoverConsole.Models
             throw new NotImplementedException();
         }
 
-        public virtual string[,] DrawPlateau()
+        public virtual PlateauMap DrawPlateau()
         {
             
-            string[,] layout = plateauLayout.DrawLayout();
-            Layout = layout;
+            PlateauMap = plateauLayout.DrawLayout();
+            return PlateauMap;
+        }
 
-            for (int j = 0; j < Max_X_Coordinate; j++)
+        public void PrintPlateau() 
+        {
+            for (int j = Max_X_Coordinate-1; j > 0 ; j--)
             {
                 for (int k = 0; k < Max_Y_Coordinate; k++)
                 {
-                    string tempElement = layout[j, k];
+                    string tempElement = PlateauMap.Layout[j, k];
                     Console.Write(" " + tempElement + " ");
                 }
                 Console.WriteLine("\n");
             }
-
-            return layout;
-
         }
 
         public string GetPalteauTemperature() 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarsMissionConsole.Models;
 
 namespace MarsMissionConsole.Interfaces
 {
@@ -14,7 +15,7 @@ namespace MarsMissionConsole.Interfaces
 
         public bool RemoveObstacles(int x_Coordinate, int y_Coordinate);
 
-        public string[,] DrawPlateau();
+        public PlateauMap DrawPlateau();
        
     }
 }

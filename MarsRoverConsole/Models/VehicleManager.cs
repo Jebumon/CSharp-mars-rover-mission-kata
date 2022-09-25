@@ -12,11 +12,17 @@ namespace MarsMissionConsole.Models
         public string NewDirection = "";
         DirectionCalculator directionCalculator = new DirectionCalculator();
         CurrentCoordinate CurrentCoordinate { get; set; }
+        PlateauMap PlateauMap { get; set; }
+        //public string[,] PlateauLayout { get; set; }
 
-        public VehicleManager(CurrentCoordinate currentCoordinate)
+        public VehicleManager(CurrentCoordinate currentCoordinate, PlateauMap plateauMap)
         {
             CurrentCoordinate = currentCoordinate;
+            PlateauMap = plateauMap;
+            
+            //PlateauLayout = plateauLayout;
         }
+
 
         public virtual void MoveBackward(int x, int y)
         {

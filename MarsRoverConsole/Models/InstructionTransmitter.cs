@@ -10,18 +10,24 @@ namespace MarsMissionConsole.Models
     public class InstructionTransmitter
     {
         CurrentCoordinate CurrentCoordinate { get; set; }
+        PlateauMap PlateauMap { get; set; }
+        //string[,] PlateauLayout { get; set; }   
         
 
         //CurrentCoordinate currentCoordinate = new CurrentCoordinate();
-        public InstructionTransmitter(CurrentCoordinate currentCoordinate)
+        public InstructionTransmitter(CurrentCoordinate currentCoordinate, PlateauMap plateauMap)
         {
             CurrentCoordinate = currentCoordinate;
+            PlateauMap = plateauMap;
+            
+            //PlateauLayout = plateauLayout;
             //MarsRover = new MarsRover();
         }
 
         public void TransmitInstruction(string[] decodedInstructionsArray) 
         {
-            MarsRover MarsRover = new MarsRover(CurrentCoordinate);
+            MarsRover MarsRover = new MarsRover(CurrentCoordinate, PlateauMap);
+            
 
             foreach (var instruction in decodedInstructionsArray) 
             {

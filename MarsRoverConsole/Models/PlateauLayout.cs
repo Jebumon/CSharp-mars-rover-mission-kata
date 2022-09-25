@@ -8,17 +8,21 @@ namespace MarsMissionConsole.Models
 {
     public class PlateauLayout
     {
+        PlateauMap PlateauMap { get; set; }
         public int Max_X { get; private set; }
         public int Max_Y { get; private set; }
 
-        public PlateauLayout(int max_X, int max_Y)
+        //PlateauMap plateauMap { get; set; }
+
+        public PlateauLayout(int max_X, int max_Y, PlateauMap plateauMap)
         {
             Max_X = max_X;
             Max_Y = max_Y;  
+            PlateauMap = plateauMap;
         }
         
 
-        public string[,] DrawLayout() 
+        public PlateauMap DrawLayout() 
         {
             string[,] layout = new string[Max_X, Max_Y];
 
@@ -30,7 +34,8 @@ namespace MarsMissionConsole.Models
                 }
             }
 
-            return layout;
+            PlateauMap.Layout = layout;
+            return PlateauMap;
         
         }
     }
