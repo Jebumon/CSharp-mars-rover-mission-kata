@@ -58,8 +58,9 @@ namespace MarsMissionConsole.Models
                             return "W";
                     }
                 }
-            throw new ArgumentException("Please enter a valid direction");
-
+                Console.WriteLine("Please enter a valid direction");
+                throw new ArgumentException("Please enter a valid direction");
+            
         }
     }
 }

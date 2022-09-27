@@ -17,7 +17,6 @@ namespace MarsRoverConsole.MarsMissionApp
 
         InstructionDecoder instructionDecoder = new InstructionDecoder();
         
-
         public MarsMissionAppManager(int xMaxCoordinate, int yMaxCoordinate)
         {
             X_MaxCoordinateOfPlateaue = xMaxCoordinate;
@@ -36,20 +35,15 @@ namespace MarsRoverConsole.MarsMissionApp
             currentCoordinate.Y_MaxCoordinate = Y_MaxCoordinateOfPlateaue;
 
             PlateauMap plateauMap = new PlateauMap();
-
-            List<CurrentCoordinate> RoverCoordinateList = new List<CurrentCoordinate>();
-            
+            MarsRover Rover = new MarsRover(currentCoordinate, plateauMap);
             RectangularPlateau plateau = new RectangularPlateau(X_MaxCoordinateOfPlateaue, Y_MaxCoordinateOfPlateaue, plateauMap);
             plateau.DrawPlateau();
-            MarsRover Rover = new MarsRover(currentCoordinate, plateauMap);
+            
+            InstructionTransmitter instructionTransmitter = new InstructionTransmitter(currentCoordinate, plateauMap);
+            instructionTransmitter.TransmitInstruction(instructionDecoder.Decode(inputInstructions));
+
             DisplayManager displayManager = new DisplayManager(plateauMap, currentCoordinate);
             Rover.RoverRouteUpdate(Rover_X_Coordinate, Rover_Y_Coordinate, initialDirection);
-
-            String[] decodedInstructionsArray = instructionDecoder.Decode(inputInstructions);
-            
-            InstructionTransmitter instructionTransmitter = new InstructionTransmitter(currentCoordinate, plateauMap, RoverCoordinateList);
-            instructionTransmitter.TransmitInstruction(decodedInstructionsArray);
-
             Console.WriteLine("\n-------------------Plateau Map--------------------\n");
             displayManager.PrintDisplay();
 

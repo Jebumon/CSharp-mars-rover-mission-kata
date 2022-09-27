@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarsMissionConsole.MarsMissionApp;
 
 namespace MarsRoverConsole.Models
 {
     public class InstructionDecoder
     {
+        RunningLoop runningLoop = new RunningLoop();
         public InstructionDecoder()
         {
         }
@@ -39,7 +41,8 @@ namespace MarsRoverConsole.Models
                 else 
                 {
                     Console.WriteLine("Invalid Movement Instruction");
-                    throw new ArgumentException(message: "Please enter valid command");
+                    //throw new ArgumentException(message: "Please enter valid command");
+                    runningLoop.RunningLooop();
                 }
                 
 

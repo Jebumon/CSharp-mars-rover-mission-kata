@@ -11,7 +11,7 @@ namespace MarsMissionConsole.Models
     {   CurrentCoordinate CurrentCoordinate { get; set; }
         PlateauMap PlateauMap { get; set; }
 
-        public InstructionTransmitter(CurrentCoordinate currentCoordinate, PlateauMap plateauMap, List<CurrentCoordinate> roverCoordinateList)
+        public InstructionTransmitter(CurrentCoordinate currentCoordinate, PlateauMap plateauMap)
         {
             CurrentCoordinate = currentCoordinate;
             PlateauMap = plateauMap;
