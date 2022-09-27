@@ -26,7 +26,7 @@ namespace MarsMissionConsole.Models
             throw new NotImplementedException();
         }
 
-        public virtual CurrentCoordinate MoveForward(int x, int y)
+        public virtual CurrentCoordinate MoveForward()
         {
             switch(CurrentCoordinate.CurrentDirection)
             {
@@ -43,12 +43,37 @@ namespace MarsMissionConsole.Models
                     CurrentCoordinate.Y_Coordinate--;
                     break;
             }
+            RoverRouteUpdate(CurrentCoordinate.X_Coordinate, CurrentCoordinate.Y_Coordinate, CurrentCoordinate.CurrentDirection);
+            Console.WriteLine("Rover route coordinates : "+ CurrentCoordinate.X_Coordinate+" "+ CurrentCoordinate.Y_Coordinate+" "+CurrentCoordinate.CurrentDirection);
+
             return CurrentCoordinate;
+        }
+
+        public virtual void RoverRouteUpdate(int x_Coordinate, int y_Coordinate, string direction) 
+        {
+            string roverImage = "";
+            switch (direction)
+            {
+                case "N":
+                    roverImage = "⏫";
+                    break;
+                case "E":
+                    roverImage = "⏩";
+                    break;
+                case "W":
+                    roverImage = "⏪";
+                    break;
+                case "S":
+                    roverImage = "⏬";
+                    break;
+            }
+
+            PlateauMap.Layout[x_Coordinate, y_Coordinate] = roverImage;
         }
 
         public virtual void TurnLeft()
         {
-            Console.WriteLine("Rover Turn Left ◀️");
+            Console.WriteLine("Rover Turn Left  ◀️");
             NewDirection = directionCalculator.CalculateDirection(CurrentCoordinate.CurrentDirection, "Left");
             CurrentCoordinate.CurrentDirection = NewDirection;
         }

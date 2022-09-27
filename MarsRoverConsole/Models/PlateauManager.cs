@@ -47,6 +47,8 @@ namespace MarsRoverConsole.Models
             }
         }
 
+        
+
         public string GetPalteauTemperature() 
         {
             return "";

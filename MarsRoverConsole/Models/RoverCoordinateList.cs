@@ -10,6 +10,7 @@ namespace MarsMissionConsole.Models
 {
     public class RoverCoordinateList
     {
-       public List<CurrentCoordinate> currentCoordinateList { get; set; } = new List<CurrentCoordinate>();
+        public List<CurrentCoordinate> currentCoordinateList { get; set; } = new List<CurrentCoordinate>();
+
     }
 }

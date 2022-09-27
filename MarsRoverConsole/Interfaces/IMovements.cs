@@ -9,8 +9,9 @@ namespace MarsMissionConsole.Interfaces
 {
     public interface IMovements
     {
-        public CurrentCoordinate MoveForward(int x, int y);
+        public CurrentCoordinate MoveForward();
         public void MoveBackward(int x, int y);
+        public void RoverRouteUpdate(int x, int y, string direction);
         public void TurnLeft();
         public void TurnRight();
     }

@@ -16,6 +16,7 @@ namespace MarsRoverConsole.MarsMissionApp
         public int Y_MaxCoordinateOfPlateaue { get; private set; }
 
         InstructionDecoder instructionDecoder = new InstructionDecoder();
+        
 
         public MarsMissionAppManager(int xMaxCoordinate, int yMaxCoordinate)
         {
@@ -26,7 +27,7 @@ namespace MarsRoverConsole.MarsMissionApp
         public string MarsManager(int Rover_X_Coordinate, int Rover_Y_Coordinate, string initialDirection, string inputInstructions) 
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
-
+            
             CurrentCoordinate currentCoordinate = new CurrentCoordinate();
             currentCoordinate.CurrentDirection = initialDirection;
             currentCoordinate.X_Coordinate = Rover_X_Coordinate;
@@ -35,27 +36,21 @@ namespace MarsRoverConsole.MarsMissionApp
             currentCoordinate.Y_MaxCoordinate = Y_MaxCoordinateOfPlateaue;
 
             PlateauMap plateauMap = new PlateauMap();
-            RoverCoordinateList roverCoordinateList = new RoverCoordinateList();
 
-            DisplayManager displayManager = new DisplayManager(roverCoordinateList, plateauMap, currentCoordinate);
-            displayManager.UpdateDisplay();
+            List<CurrentCoordinate> RoverCoordinateList = new List<CurrentCoordinate>();
+            
+            RectangularPlateau plateau = new RectangularPlateau(X_MaxCoordinateOfPlateaue, Y_MaxCoordinateOfPlateaue, plateauMap);
+            plateau.DrawPlateau();
+            MarsRover Rover = new MarsRover(currentCoordinate, plateauMap);
+            DisplayManager displayManager = new DisplayManager(plateauMap, currentCoordinate);
+            Rover.RoverRouteUpdate(Rover_X_Coordinate, Rover_Y_Coordinate, initialDirection);
 
             String[] decodedInstructionsArray = instructionDecoder.Decode(inputInstructions);
             
-            InstructionTransmitter instructionTransmitter = new InstructionTransmitter(currentCoordinate, plateauMap, roverCoordinateList);
+            InstructionTransmitter instructionTransmitter = new InstructionTransmitter(currentCoordinate, plateauMap, RoverCoordinateList);
+            instructionTransmitter.TransmitInstruction(decodedInstructionsArray);
 
-            roverCoordinateList = instructionTransmitter.TransmitInstruction(decodedInstructionsArray);
-
-            /*foreach(var instruction in roverCoordinateList.currentCoordinateList) 
-            {
-                Console.WriteLine("MMM : " +instruction.X_Coordinate + " " + instruction.Y_Coordinate);
-            }*/
-
-            RectangularPlateau plateau = new RectangularPlateau(X_MaxCoordinateOfPlateaue,Y_MaxCoordinateOfPlateaue, plateauMap);
-            plateau.DrawPlateau();
-
-            Console.WriteLine("\n---------------------Plateau Layout--------------------\n");
-            displayManager.UpdateDisplay();
+            Console.WriteLine("\n-------------------Plateau Map--------------------\n");
             displayManager.PrintDisplay();
 
             string output = currentCoordinate.X_Coordinate.ToString() +" "+ currentCoordinate.Y_Coordinate.ToString() +" "+ currentCoordinate.CurrentDirection;

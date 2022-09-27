@@ -18,30 +18,33 @@ namespace MarsRoverConsole.Models
             int i = 0;
             foreach (char instruction in singleInstructions) 
             {
-                switch (instruction)
+                if(instruction == 'L'|| instruction == 'R'|| instruction == 'M') 
                 {
-                    case 'L':
-                        commandArray[i++] = "Left";
-                        break;
+                    switch (instruction)
+                    {
+                        case 'L':
+                            commandArray[i++] = "Left";
+                            break;
 
-                    case 'R':
-                        commandArray[i++] = "Right";
-                        break ;
+                        case 'R':
+                            commandArray[i++] = "Right";
+                            break;
 
-                    case 'M':
-                        commandArray[i++] = "MoveForward";
-                        break;
-
-                    default:
-                        commandArray[i++] = "UnknownCommand";
-                        throw new ArgumentException(message: "Please enter valid command");
+                        case 'M':
+                            commandArray[i++] = "MoveForward";
+                            break;
+  
+                    }
                 }
+                else 
+                {
+                    Console.WriteLine("Invalid Movement Instruction");
+                    throw new ArgumentException(message: "Please enter valid command");
+                }
+                
+
             }
-            /*foreach(string instruction in commandArray)
-            {
-                Console.WriteLine(instruction.ToString());
-            }*/
-            
+
             return commandArray;
             
         }

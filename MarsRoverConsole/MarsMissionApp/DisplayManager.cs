@@ -12,29 +12,18 @@ namespace MarsMissionConsole.MarsMissionApp
     public class DisplayManager
     {
         public CurrentCoordinate CurrentCoordinate { get; set; }
-        public RoverCoordinateList RoverCoordinateList { get; set; }
         public PlateauMap PlateauMap { get; set; }
 
-        public DisplayManager(RoverCoordinateList roverCoordinateList, PlateauMap plateauMap, CurrentCoordinate currentCoordinate )
+        public DisplayManager(PlateauMap plateauMap, CurrentCoordinate currentCoordinate )
         {
             CurrentCoordinate = currentCoordinate;
-            RoverCoordinateList = roverCoordinateList;
             PlateauMap = plateauMap;
-        }
-
-        public void UpdateDisplay() 
-        {
-            foreach(var roverCoordinate in RoverCoordinateList.currentCoordinateList) 
-            {
-                //Console.WriteLine("X: " + roverCoordinate.X_Coordinate.ToString() + " Y : " + roverCoordinate.Y_Coordinate.ToString());
-                PlateauMap.Layout[roverCoordinate.X_Coordinate, roverCoordinate.Y_Coordinate] = "⏫";
-            }
         }
 
         public void PrintDisplay() 
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Magenta;
 
             for (int k = PlateauMap.Layout.GetLength(1)-1; k >= 0; k--)
                 {
@@ -42,7 +31,18 @@ namespace MarsMissionConsole.MarsMissionApp
                     {
                         string tempElement = PlateauMap.Layout[j, k];
                         int a = PlateauMap.Layout.Length;
+
+                    if(tempElement == "⏫"|| tempElement == "⏩" || tempElement == "⏪" || tempElement == "⏬") 
+                    { 
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write(" " + tempElement + " ");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                    }
+                    else 
+                    { 
+                        Console.Write(" " + tempElement + " "); 
+                    }
+                        
                     }
                     Console.WriteLine("\n");
                 }

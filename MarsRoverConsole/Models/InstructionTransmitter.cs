@@ -10,20 +10,18 @@ namespace MarsMissionConsole.Models
     public class InstructionTransmitter
     {   CurrentCoordinate CurrentCoordinate { get; set; }
         PlateauMap PlateauMap { get; set; }
-        RoverCoordinateList RoverCoordinateList { get; set; }
 
-        public InstructionTransmitter(CurrentCoordinate currentCoordinate, PlateauMap plateauMap, RoverCoordinateList roverCoordinateList)
+        public InstructionTransmitter(CurrentCoordinate currentCoordinate, PlateauMap plateauMap, List<CurrentCoordinate> roverCoordinateList)
         {
             CurrentCoordinate = currentCoordinate;
             PlateauMap = plateauMap;
-            RoverCoordinateList = roverCoordinateList;
             
         }
 
-        public RoverCoordinateList TransmitInstruction(string[] decodedInstructionsArray) 
+        public void TransmitInstruction(string[] decodedInstructionsArray) 
         {
             MarsRover MarsRover = new MarsRover(CurrentCoordinate, PlateauMap);
-            
+
             foreach (var instruction in decodedInstructionsArray) 
             {
                 switch (instruction) 
@@ -37,22 +35,12 @@ namespace MarsMissionConsole.Models
                         break;
 
                     case "MoveForward":
-                        CurrentCoordinate coordinate = MarsRover.MoveForward(0,0);
-                        Console.WriteLine("Rover Route coordinates: "+coordinate.X_Coordinate+ " "+ coordinate.Y_Coordinate+" "+ coordinate.CurrentDirection);
-                        RoverCoordinateList.currentCoordinateList.Add(coordinate);
-
-                        //Work in progress
-                        /*foreach(var a in RoverCoordinateList.currentCoordinateList) 
-                        {
-                            Console.WriteLine("RCL : "+a.X_Coordinate+ " " + a.Y_Coordinate); 
-                        
-                        }*/
-
+                        MarsRover.MoveForward();                        
                         break;
                 }
                 
             }
-            return RoverCoordinateList;
+            
         }
     }
 }
