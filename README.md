@@ -7,6 +7,8 @@ The project is about  to create a program to move Rover around the surface of Ma
 The Plateau is divided into a grid. A Rover’s position is represented by x and y co-ordinates and the letters N, S, W, E to represent North,
 South, West, East (the four cardinal compass points) respectively.
 
+I have added an additional feature to display Rover position and path on Plateau surface like a map.
+
 <!-- Technologies Involved -->
 ##  Technologies Involved
 
@@ -21,10 +23,14 @@ Shown below is the Project Flow
 ## Sample Console App Results
 
 ## User Inputs
-![image](https://user-images.githubusercontent.com/67691782/192166697-a7ff61c5-6119-4cf7-a255-7aacf7d521c7.png)
+![User Inputs](https://user-images.githubusercontent.com/67691782/192407456-f676623c-28d3-457c-ab60-2beb670e02fe.jpg)
+
 
 ## Final Output
-![image](https://user-images.githubusercontent.com/67691782/192166733-6825b8c3-9f33-4204-848d-9d63698bad21.png)
+![Rover coordinates](https://user-images.githubusercontent.com/67691782/192407544-7f771adc-f58c-42a3-9eb4-81f128524818.jpg)
+
+## Plateau Map 
+![Plateau Map](https://user-images.githubusercontent.com/67691782/192407616-33334572-cef3-4970-a5cc-1031003dbbf9.jpg)
 
 
 
