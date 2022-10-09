@@ -13,14 +13,15 @@ namespace MarsRoverConsole.Models
         public InstructionDecoder()
         {
         }
-        public string[] Decode(string instructions) 
+        public string[] Decode(string instructions)
         {
             string[] commandArray = new string[instructions.Length];
-            char [] singleInstructions = instructions.ToCharArray();
+            char[] singleInstructions = instructions.ToCharArray();
             int i = 0;
-            foreach (char instruction in singleInstructions) 
+
+            try
             {
-                if(instruction == 'L'|| instruction == 'R'|| instruction == 'M') 
+                foreach (char instruction in singleInstructions)
                 {
                     switch (instruction)
                     {
@@ -35,21 +36,19 @@ namespace MarsRoverConsole.Models
                         case 'M':
                             commandArray[i++] = "MoveForward";
                             break;
-  
+                        default:
+                            Console.WriteLine("Invalid Movement Instruction switch");
+                            throw new ArgumentException();     
                     }
                 }
-                else 
-                {
-                    Console.WriteLine("Invalid Movement Instruction");
-                    //throw new ArgumentException(message: "Please enter valid command");
-                    runningLoop.RunningLooop();
-                }
-                
-
+                return commandArray;
             }
-
-            return commandArray;
-            
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                throw new ArgumentException(message: "Please enter valid command");
+            }
         }
     }
 }
