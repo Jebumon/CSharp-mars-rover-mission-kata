@@ -67,8 +67,16 @@ namespace MarsMissionConsole.Models
                     roverImage = "⏬";
                     break;
             }
+            try
+            {
 
-            PlateauMap.Layout[x_Coordinate, y_Coordinate] = roverImage;
+                PlateauMap.Layout[x_Coordinate, y_Coordinate] = roverImage;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new ArgumentException(message: "Can't place rover outside the Plateau");
+            }
         }
 
         public virtual void TurnLeft()

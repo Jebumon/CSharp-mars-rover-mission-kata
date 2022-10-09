@@ -55,4 +55,11 @@ public class MarsRoverAppTests
         var ex = Assert.Throws<ArgumentException>(() => MarsRoverApp.MarsManager(5,5,"N", "RQQ"));
         Assert.That(ex.Message, Is.EqualTo("Please enter valid command"));
     }
+
+    [Test]
+    public void Decode_Command_10_10_N_RQQ_should_ArgumentException_Rover_Outside()
+    {
+        var ex = Assert.Throws<ArgumentException>(() => MarsRoverApp.MarsManager(10, 10, "N", "MMMRMM"));
+        Assert.That(ex.Message, Is.EqualTo("Can't place rover outside the Plateau"));
+    }
 }

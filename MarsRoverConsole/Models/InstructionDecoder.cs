@@ -37,7 +37,7 @@ namespace MarsRoverConsole.Models
                             commandArray[i++] = "MoveForward";
                             break;
                         default:
-                            Console.WriteLine("Invalid Movement Instruction switch");
+                            Console.WriteLine("Invalid Movement Instruction");
                             throw new ArgumentException();     
                     }
                 }
